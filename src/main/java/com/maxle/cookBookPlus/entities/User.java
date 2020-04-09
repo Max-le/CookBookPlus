@@ -2,6 +2,7 @@ package com.maxle.cookBookPlus.entities;
 
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
@@ -12,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @Entity(name = "chef_user")
 @Table(name = "chef_user")
 @Data
+@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
 
@@ -30,5 +32,8 @@ public class User {
     @NotBlank(message = "email cannot be blank.")
     @Email(message = "This email is not valid.")
     String email;
+
+    public User(){}
+
 
 }
