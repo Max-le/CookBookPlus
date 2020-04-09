@@ -3,8 +3,7 @@ package com.maxle.cookBookPlus.controllers;
 
 import com.maxle.cookBookPlus.entities.User;
 import com.maxle.cookBookPlus.repositories.UserRepository;
-import com.maxle.cookBookPlus.service.user.UserService;
-import com.maxle.cookBookPlus.service.user.UserServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +20,12 @@ public class UserController {
         return "Hello 👋";
     }
 
-    private final UserService userService;
-
     @Autowired
-    public UserController(UserServiceImpl userServ){
-        this.userService = userServ;
-    }
+    private UserRepository userRepo;
 
     @GetMapping("/all")
     public List<User> getAll() {
-        List<User> users = userService.findAll();
-        return users;
+        return userRepo.findAll();
     }
 
 }
