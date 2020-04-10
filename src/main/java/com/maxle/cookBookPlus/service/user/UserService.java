@@ -1,7 +1,11 @@
 package com.maxle.cookBookPlus.service.user;
 
+import com.maxle.cookBookPlus.models.entities.User;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
