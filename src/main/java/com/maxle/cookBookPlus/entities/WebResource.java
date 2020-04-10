@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity(name = "web_resource")
 @Table(name = "web_resource")
@@ -27,4 +28,7 @@ public class WebResource {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     Byte[] image;
+
+    @OneToMany(mappedBy = "webResource")
+    Set<Bookmark> bookmarks;
 }

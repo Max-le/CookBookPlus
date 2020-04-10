@@ -9,6 +9,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.Set;
 
 @Entity(name = "chef_user")
 @Table(name = "chef_user")
@@ -32,6 +33,9 @@ public class User {
     @NotBlank(message = "email cannot be blank.")
     @Email(message = "This email is not valid.")
     String email;
+
+    @OneToMany(mappedBy = "user")
+    Set<Bookmark> bookmarks;
 
     public User(){}
 
