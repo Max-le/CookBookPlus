@@ -1,4 +1,4 @@
-package com.maxle.cookBookPlus.entities;
+package com.maxle.cookBookPlus.models.entities;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -7,21 +7,15 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
-@Entity
 @Data
+@Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Recipe {
+public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column( nullable=false)
-    @Size(max=64)
+    @Column(nullable = false) @Size(max = 32)
     String name;
-
-    String description;
-
-    String type;
-
 }

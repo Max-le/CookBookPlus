@@ -1,8 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
-import com.maxle.cookBookPlus.entities.User;
-import com.maxle.cookBookPlus.repositories.UserRepository;
+import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

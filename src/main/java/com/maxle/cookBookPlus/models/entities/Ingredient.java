@@ -1,4 +1,4 @@
-package com.maxle.cookBookPlus.entities;
+package com.maxle.cookBookPlus.models.entities;
 
 import lombok.AccessLevel;
 import lombok.Data;
@@ -10,14 +10,20 @@ import javax.validation.constraints.Size;
 @Entity
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Cuisine {
-
+public class Ingredient {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column( nullable = false) @Size(max=32)
+    @Column(nullable=false)
     String name;
 
-    @Size(max=64)
     String description;
+
+    @Column(nullable=false)
+    Short amount;
+
+    @Column(nullable=false) @Size(max=16)
+    String unit;
+
+
 }

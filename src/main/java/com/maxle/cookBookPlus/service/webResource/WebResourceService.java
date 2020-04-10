@@ -1,7 +1,7 @@
 package com.maxle.cookBookPlus.service.webResource;
 
-import com.maxle.cookBookPlus.entities.User;
-import com.maxle.cookBookPlus.entities.WebResource;
+import com.maxle.cookBookPlus.models.entities.User;
+import com.maxle.cookBookPlus.models.entities.WebResource;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 

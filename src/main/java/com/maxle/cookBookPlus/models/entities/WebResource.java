@@ -1,4 +1,4 @@
-package com.maxle.cookBookPlus.entities;
+package com.maxle.cookBookPlus.models.entities;
 
 import lombok.AccessLevel;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.maxle.cookBookPlus.service.user;
 
-import com.maxle.cookBookPlus.entities.User;
+import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.repositories.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;

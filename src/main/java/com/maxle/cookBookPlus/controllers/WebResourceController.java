@@ -1,7 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
-import com.maxle.cookBookPlus.entities.WebResource;
+import com.maxle.cookBookPlus.models.entities.WebResource;
 import com.maxle.cookBookPlus.service.webResource.WebResourceService;
 import com.maxle.cookBookPlus.service.webResource.WebResourceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

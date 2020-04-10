@@ -1,8 +1,6 @@
-package com.maxle.cookBookPlus.entities.compositeKey;
+package com.maxle.cookBookPlus.models.entities.compositeKey;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;

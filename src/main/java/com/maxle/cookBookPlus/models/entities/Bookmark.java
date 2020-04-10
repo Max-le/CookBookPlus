@@ -1,6 +1,6 @@
-package com.maxle.cookBookPlus.entities;
+package com.maxle.cookBookPlus.models.entities;
 
-import com.maxle.cookBookPlus.entities.compositeKey.BookmarkKey;
+import com.maxle.cookBookPlus.models.entities.compositeKey.BookmarkKey;
 import lombok.Data;
 
 import javax.persistence.EmbeddedId;
