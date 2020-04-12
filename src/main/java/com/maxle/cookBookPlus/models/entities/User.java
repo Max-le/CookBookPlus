@@ -26,7 +26,7 @@ public class User {
     String username;
 
     @Column(nullable = false)
-    String password_hash;
+    String password;
 
     @Column(nullable = false)
     @NotBlank(message = "email cannot be blank.")
