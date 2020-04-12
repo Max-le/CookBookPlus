@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity(name = "chef_user")
 @Table(name = "chef_user")
 @Data
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
 

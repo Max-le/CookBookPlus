@@ -1,10 +1,12 @@
 package com.maxle.cookBookPlus.controllers;
 
 
+import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -33,8 +35,9 @@ public class UserController {
     }
 
     @PostMapping(value = {"/", ""})
-    public String create(){
-        return "This is the endpoint to create a user. Send a POST request here !";
+    public ResponseEntity<User> create(@Valid @RequestBody UserCreationDTO dtoModel){
+        User newUser = new User();
+        return ResponseEntity.status(200).body(newUser);
 
     }
 
