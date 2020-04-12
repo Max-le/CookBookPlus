@@ -6,7 +6,8 @@ import lombok.Getter;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-// https://www.baeldung.com/registration-with-spring-mvc-and-spring-security#the-user-dto-object@Getter @Setter
+// https://www.baeldung.com/registration-with-spring-mvc-and-spring-security#the-user-dto-object
+  @Getter @Setter
 public class UserCreationDTO {
 
     @NotNull @NotBlank
