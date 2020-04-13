@@ -1,6 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
+import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserDTO;
 import com.maxle.cookBookPlus.models.entities.User;
@@ -8,6 +9,7 @@ import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,8 +41,7 @@ public class UserController {
     }
 
     @PostMapping(value = {"/", ""})
-    public String create(){
-        return "You've reached the endpoint to create a user!";
+    public ResponseEntity<User> create(@Valid @RequestBody UserCreationDTO dtoModel){
 
         User newUser = this.mapper.map(dtoModel, User.class);
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(newUser));
@@ -60,6 +61,13 @@ public class UserController {
         //
 
         return ResponseEntity.ok(uDTO);
+    }
+
+    //Get all recipes of one user.
+    @GetMapping(value = "{id}/recipes")
+    public ResponseEntity<List<RecipeDTO>> getRecipesOfOneUser(@PathVariable("id") Long id){
+        //TODO : implements recipe response.
+        return null;
     }
 
 }
