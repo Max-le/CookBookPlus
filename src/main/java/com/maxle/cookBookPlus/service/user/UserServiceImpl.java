@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private UserRepository userRepo;
+    private final UserRepository userRepo;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepo){
@@ -21,17 +21,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        return null;
+        return this.userRepo.save(user);
     }
 
     @Override
     public List<User> findAll() {
-        List<User> users = userRepo.findAll();
-        return users ;
+        return userRepo.findAll();
     }
 
     @Override
-    public Optional<User> findById(@NonNull Long id) {
-        return Optional.empty();
+    public User findById(@NonNull Long id) {
+        return this.userRepo.findById(id).orElse(null);
     }
 }

@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface UserService {
     User save(User user);
     List<User> findAll();
-    Optional<User> findById(@NonNull Long id);
+    User findById(@NonNull Long id);
 }
