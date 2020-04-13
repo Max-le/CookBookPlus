@@ -35,6 +35,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     Set<Bookmark> bookmarks;
+    //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine
 
     public User(){}
 
