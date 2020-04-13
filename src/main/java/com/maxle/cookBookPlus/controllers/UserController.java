@@ -6,6 +6,7 @@ import com.maxle.cookBookPlus.models.DTO.user.UserDTO;
 import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,16 +18,19 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UserController {
 
+
     @GetMapping("/greeting")
     public String greet() {
         return "Hello 👋";
     }
 
     private final UserService userService;
+    private final ModelMapper mapper;
 
     @Autowired
-    public UserController(UserServiceImpl userServ){
+    public UserController(UserServiceImpl userServ, ModelMapper mapper){
         this.userService = userServ;
+        this.mapper = mapper;
     }
 
     @GetMapping(value = {"/", ""})
@@ -37,6 +41,9 @@ public class UserController {
     @PostMapping(value = {"/", ""})
     public String create(){
         return "You've reached the endpoint to create a user!";
+
+        User newUser = this.mapper.map(dtoModel, User.class);
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(newUser));
 
     }
 

@@ -1,4 +1,4 @@
-INSERT INTO chef_user ("id","email","password_hash","username")
+INSERT INTO chef_user ("id","email","password","username")
 VALUES
 (1,'max@mail.com','12345','maxou'),
 (2,'joe@mail.com','fhjks','joey'),

@@ -14,7 +14,6 @@ import java.util.Set;
 @Entity(name = "chef_user")
 @Table(name = "chef_user")
 @Data
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
 
@@ -27,7 +26,7 @@ public class User {
     String username;
 
     @Column(nullable = false)
-    String password_hash;
+    String password;
 
     @Column(nullable = false)
     @NotBlank(message = "email cannot be blank.")
@@ -36,6 +35,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     Set<Bookmark> bookmarks;
+    //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine
 
     public User(){}
 
