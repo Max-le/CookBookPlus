@@ -24,4 +24,7 @@ public class Recipe {
 
     String type;
 
+    @ManyToOne()
+    User user;
+
 }

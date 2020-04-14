@@ -33,9 +33,13 @@ public class User {
     @Email(message = "This email is not valid.")
     String email;
 
+    //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine, ...)
+
+    @OneToMany(mappedBy = "user")
+    Set<Recipe> recipes;
+
     @OneToMany(mappedBy = "user")
     Set<Bookmark> bookmarks;
-    //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine
 
     public User(){}
 

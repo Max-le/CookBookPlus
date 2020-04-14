@@ -37,9 +37,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Recipe> findRecipesOfUser(@NonNull Long chef_user_id) {
-        Optional<User> userOptional = this.userRepo.findById(chef_user_id);
-        if (!userOptional.isPresent()) return null;
-
-        User user = userOptional.get().get
+//        Optional<User> userOptional = this.userRepo.findById(chef_user_id);
+//        if (!userOptional.isPresent()) return null;
+        return null;
     }
 }
