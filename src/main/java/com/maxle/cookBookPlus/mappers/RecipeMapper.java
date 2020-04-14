@@ -2,9 +2,9 @@ package com.maxle.cookBookPlus.mappers;
 
 import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
 import com.maxle.cookBookPlus.models.entities.Recipe;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class RecipeMapper {
 
     public RecipeDTO toRecipeDTO(Recipe r){
