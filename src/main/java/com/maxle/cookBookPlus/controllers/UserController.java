@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/users")
@@ -69,11 +70,10 @@ public class UserController {
 
     //Get all recipes of one user.
     @GetMapping(value = "{id}/recipes")
-    public ResponseEntity<List<Recipe>> getRecipesOfOneUser(@PathVariable("id") Long id){
-        //TODO : implements recipe response.
+    public ResponseEntity<Set<Recipe>> getRecipesOfOneUser(@PathVariable("id") Long id){
         User u = userService.findById(id);
 
-        return ResponseEntity.ok(recipeService.findAll());
+        return ResponseEntity.ok(u.getRecipes());
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Data
@@ -24,7 +25,7 @@ public class Recipe {
 
     String type;
 
-    @ManyToOne()
-    User user;
+    @ManyToMany(mappedBy = "recipes")
+    Set<User> users;
 
 }

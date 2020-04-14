@@ -35,13 +35,15 @@ public class User {
 
     //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine, ...)
 
-    @OneToMany(mappedBy = "user")
+    @ManyToMany()
+    @JoinTable(
+            name = "saved_recipes",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
     Set<Recipe> recipes;
 
     @OneToMany(mappedBy = "user")
     Set<Bookmark> bookmarks;
-
-    public User(){}
 
 
 }
