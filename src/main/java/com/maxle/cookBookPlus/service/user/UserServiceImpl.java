@@ -1,5 +1,6 @@
 package com.maxle.cookBookPlus.service.user;
 
+import com.maxle.cookBookPlus.models.entities.Recipe;
 import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.repositories.UserRepository;
 import lombok.NonNull;
@@ -32,5 +33,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(@NonNull Long id) {
         return this.userRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Recipe> findRecipesOfUser(@NonNull Long chef_user_id) {
+        Optional<User> userOptional = this.userRepo.findById(chef_user_id);
+        if (!userOptional.isPresent()) return null;
+
+        User user = userOptional.get().get
     }
 }

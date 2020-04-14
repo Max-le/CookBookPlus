@@ -4,7 +4,9 @@ package com.maxle.cookBookPlus.controllers;
 import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserDTO;
+import com.maxle.cookBookPlus.models.entities.Recipe;
 import com.maxle.cookBookPlus.models.entities.User;
+import com.maxle.cookBookPlus.service.recipe.RecipeService;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
 import org.modelmapper.ModelMapper;
@@ -27,11 +29,13 @@ public class UserController {
     }
 
     private final UserService userService;
+    private final RecipeService recipeService;
     private final ModelMapper mapper;
 
     @Autowired
-    public UserController(UserServiceImpl userServ, ModelMapper mapper){
-        this.userService = userServ;
+    public UserController(UserServiceImpl u, RecipeService r, ModelMapper mapper){
+        this.userService = u;
+        this.recipeService = r;
         this.mapper = mapper;
     }
 
@@ -65,9 +69,11 @@ public class UserController {
 
     //Get all recipes of one user.
     @GetMapping(value = "{id}/recipes")
-    public ResponseEntity<List<RecipeDTO>> getRecipesOfOneUser(@PathVariable("id") Long id){
+    public ResponseEntity<List<Recipe>> getRecipesOfOneUser(@PathVariable("id") Long id){
         //TODO : implements recipe response.
-        return null;
+        User u = userService.findById(id);
+
+        return ResponseEntity.ok(recipeService.findAll());
     }
 
 }
