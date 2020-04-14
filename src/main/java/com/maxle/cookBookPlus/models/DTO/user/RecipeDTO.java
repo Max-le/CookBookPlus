@@ -11,4 +11,5 @@ public class RecipeDTO {
     String description;
     String type;
 
+
 }

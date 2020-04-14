@@ -11,5 +11,5 @@ public class UserRecipesDTO {
     private Long id;
     private String username;
     private String email;
-    private List<Recipe> recipes;
+    private List<RecipeDTO> recipes;
 }

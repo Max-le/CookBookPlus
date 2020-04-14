@@ -70,10 +70,8 @@ public class UserController {
 
     //Get all recipes of one user.
     @GetMapping(value = "{id}/recipes")
-    public ResponseEntity<Set<Recipe>> getRecipesOfOneUser(@PathVariable("id") Long id){
-        User u = userService.findById(id);
-
-        return ResponseEntity.ok(u.getRecipes());
+    public ResponseEntity<List<RecipeDTO>> getRecipesOfOneUser(@PathVariable("id") Long id){
+        return ResponseEntity.ok(this.userService.findRecipesOfUser(id));
     }
 
 }

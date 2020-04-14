@@ -2,8 +2,9 @@ package com.maxle.cookBookPlus.models.entities;
 
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -35,11 +36,13 @@ public class User {
 
     //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine, ...)
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "saved_recipes",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     Set<Recipe> recipes;
 
     @OneToMany(mappedBy = "user")
