@@ -1,9 +1,11 @@
 package com.maxle.cookBookPlus;
 
 
+import com.maxle.cookBookPlus.models.entities.Ingredient;
 import com.maxle.cookBookPlus.models.entities.Recipe;
 import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.models.entities.WebResource;
+import com.maxle.cookBookPlus.repositories.IngredientRepository;
 import com.maxle.cookBookPlus.repositories.RecipeRepository;
 import com.maxle.cookBookPlus.repositories.UserRepository;
 import com.maxle.cookBookPlus.repositories.WebResourceRepository;
@@ -29,6 +31,8 @@ public class CookBookPlusApplication {
 	private RecipeRepository recipeRepo;
 	@Autowired
 	private WebResourceRepository wrRepo;
+	@Autowired
+	private IngredientRepository ingredientRepo;
 
 
 	public static void main(String[] args) {
@@ -43,6 +47,7 @@ public class CookBookPlusApplication {
 	@EventListener(ApplicationReadyEvent.class)
 	public void initDB(){
 		addWebResources();
+		addIngredients();
 		List<Recipe> recipes = addRecipes();
 
 		User bill = new User();
@@ -125,6 +130,30 @@ public List<WebResource> addWebResources(){
 		recipes.add(r2);
 		recipes.add(r3);
 		return recipes;
+	}
+
+	public List<Ingredient> addIngredients(){
+		Ingredient tomato = new Ingredient();
+		tomato.setName("Tomato");
+		tomato.setUnit("gram");
+
+		Ingredient milk = new Ingredient();
+		milk.setName("Milk");
+		milk.setUnit("Liter");
+
+		Ingredient carrot = new Ingredient();
+		carrot.setName("Carrots");
+		carrot.setUnit("gram");
+
+		this.ingredientRepo.save(tomato);
+		this.ingredientRepo.save(milk);
+		this.ingredientRepo.save(carrot);
+		this.ingredientRepo.flush();
+
+		List<Ingredient> ings = new ArrayList<>();
+		ings.add(tomato); ings.add(milk); ings.add(carrot);
+		return ings;
+
 	}
 
 

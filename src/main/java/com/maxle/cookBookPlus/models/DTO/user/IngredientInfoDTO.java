@@ -1,15 +1,15 @@
 package com.maxle.cookBookPlus.models.DTO.user;
 
-import lombok.Getter;
 import lombok.Setter;
+import lombok.Getter;
 
-@Getter @Setter
-public class RecipeDTO {
+@Getter
+@Setter
+public class IngredientInfoDTO {
 
    private Long id;
    private String name;
    private String description;
-   private String type;
-
+   private String unit;
 
 }

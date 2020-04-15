@@ -19,7 +19,6 @@ public class Ingredient {
 
     String description;
 
-    @Column(nullable=false)
     Short amount;
 
     @Column(nullable=false) @Size(max=16)
