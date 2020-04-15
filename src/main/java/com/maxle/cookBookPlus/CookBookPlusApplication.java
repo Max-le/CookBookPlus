@@ -57,6 +57,17 @@ public class CookBookPlusApplication {
 		this.userRepo.flush();
 
 
+		User maxUser = new User();
+		maxUser.setUsername("Max-le");
+		maxUser.setPassword("wasabi");
+		maxUser.setEmail("max.09@outlook.com");
+
+		maxUser.setRecipes(new HashSet<>());
+		maxUser.getRecipes().add(recipes.get(1));
+		this.userRepo.save(maxUser);
+		this.userRepo.flush();
+
+
 }
 
 public List<WebResource> addWebResources(){
