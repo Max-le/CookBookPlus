@@ -3,8 +3,7 @@ package com.maxle.cookBookPlus.controllers;
 
 import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
-import com.maxle.cookBookPlus.models.DTO.user.UserDTO;
-import com.maxle.cookBookPlus.models.entities.Recipe;
+import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
 import com.maxle.cookBookPlus.models.entities.User;
 import com.maxle.cookBookPlus.service.recipe.RecipeService;
 import com.maxle.cookBookPlus.service.user.UserService;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api/users")
@@ -41,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping(value = {"/", ""})
-    public List<User> getAll() {
+    public List<UserInfoDTO> getAll() {
         return userService.findAll();
     }
 
@@ -54,17 +52,8 @@ public class UserController {
     }
 
     @GetMapping(value = {"{id}"})
-    public ResponseEntity<UserDTO> getUserById(@PathVariable("id") Long id) {
-        User u = userService.findById(id);
-        if (u == null) {return null;}
-        UserDTO uDTO = new UserDTO();
-
-        //Mapping User => UserDTO
-        uDTO.setId(u.getId());
-        uDTO.setEmail(u.getEmail());
-        uDTO.setUsername(u.getUsername());
-        //
-
+    public ResponseEntity<UserInfoDTO> getUserById(@PathVariable("id") Long id) {
+        UserInfoDTO uDTO = userService.findById(id);
         return ResponseEntity.ok(uDTO);
     }
 
