@@ -24,7 +24,7 @@ public class UserController {
 
     @GetMapping("/greeting")
     public String greet() {
-        return "Hello 👋";
+        return "Hello from /users \uD83D\uDC4B👋";
     }
 
     private final UserService userService;
