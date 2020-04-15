@@ -29,6 +29,6 @@ public class WebResource {
     @Basic(fetch = FetchType.LAZY)
     Byte[] image;
 
-    @OneToMany(mappedBy = "webResource")
-    Set<Bookmark> bookmarks;
+    @ManyToMany(mappedBy = "webResources")
+    Set<User> users;
 }

@@ -46,7 +46,7 @@ public class CookBookPlusApplication {
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void initDB(){
-		addWebResources();
+		List<WebResource> resources = addWebResources();
 		addIngredients();
 		List<Recipe> recipes = addRecipes();
 
@@ -55,9 +55,11 @@ public class CookBookPlusApplication {
 		bill.setPassword("loveMicrosoft");
 		bill.setEmail("bill@outlook.com");
 
+		//Linking recipes to user
 		bill.setRecipes(new HashSet<>());
 		bill.getRecipes().add(recipes.get(0));
 		bill.getRecipes().add(recipes.get(2));
+
 		this.userRepo.save(bill);
 		this.userRepo.flush();
 
@@ -67,8 +69,15 @@ public class CookBookPlusApplication {
 		maxUser.setPassword("wasabi");
 		maxUser.setEmail("max.09@outlook.com");
 
+		//Linking recipes to user
 		maxUser.setRecipes(new HashSet<>());
 		maxUser.getRecipes().add(recipes.get(1));
+
+		//linking web resources to user
+		maxUser.setWebResources(new HashSet<>());
+		maxUser.getWebResources().add(resources.get(0));
+		maxUser.getWebResources().add(resources.get(1));
+
 		this.userRepo.save(maxUser);
 		this.userRepo.flush();
 

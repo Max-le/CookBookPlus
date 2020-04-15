@@ -45,8 +45,11 @@ public class User {
     @EqualsAndHashCode.Exclude
     Set<Recipe> recipes;
 
-    @OneToMany(mappedBy = "user")
-    Set<Bookmark> bookmarks;
-
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "bookmarks",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "resrouce_id"))
+    Set<WebResource> webResources;
 
 }
