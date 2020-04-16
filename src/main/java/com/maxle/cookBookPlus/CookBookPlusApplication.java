@@ -51,6 +51,8 @@ public class CookBookPlusApplication {
 		List<Recipe> recipes = addRecipes();
 
 		User bill = new User();
+		bill.setFirstName("Bill");
+		bill.setLastName("Gates");
 		bill.setUsername("Billy");
 		bill.setPassword("loveMicrosoft");
 		bill.setEmail("bill@outlook.com");
@@ -65,6 +67,8 @@ public class CookBookPlusApplication {
 
 
 		User maxUser = new User();
+		maxUser.setFirstName("Max");
+		maxUser.setLastName("Lepin");
 		maxUser.setUsername("Max-le");
 		maxUser.setPassword("wasabi");
 		maxUser.setEmail("max.09@outlook.com");
