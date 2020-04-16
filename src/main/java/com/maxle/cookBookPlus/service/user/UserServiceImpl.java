@@ -1,5 +1,6 @@
 package com.maxle.cookBookPlus.service.user;
 
+import com.maxle.cookBookPlus.exceptions.UserNotFoundException;
 import com.maxle.cookBookPlus.mappers.RecipeMapper;
 import com.maxle.cookBookPlus.mappers.UserMapper;
 import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
@@ -41,8 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserInfoDTO findById(@NonNull Long id) {
-        User user = this.userRepo.findById(id).orElse(null);
-        if(user == null) return null;
+        User user = this.userRepo.findById(id).orElseThrow(UserNotFoundException::new);
         return userMapper.toUserInfoDTO(user);
     }
 
