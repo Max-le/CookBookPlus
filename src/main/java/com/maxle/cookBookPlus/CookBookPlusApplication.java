@@ -16,11 +16,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class CookBookPlusApplication {
@@ -42,6 +42,10 @@ public class CookBookPlusApplication {
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
+	}
+	@Bean
+	public BCryptPasswordEncoder bcryptInstance() {
+		return new BCryptPasswordEncoder();
 	}
 
 	@EventListener(ApplicationReadyEvent.class)
