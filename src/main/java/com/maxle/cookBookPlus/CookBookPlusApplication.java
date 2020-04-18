@@ -3,7 +3,7 @@ package com.maxle.cookBookPlus;
 
 import com.maxle.cookBookPlus.models.entities.Ingredient;
 import com.maxle.cookBookPlus.models.entities.Recipe;
-import com.maxle.cookBookPlus.models.entities.User;
+import com.maxle.cookBookPlus.models.entities.chefUser;
 import com.maxle.cookBookPlus.models.entities.WebResource;
 import com.maxle.cookBookPlus.repositories.IngredientRepository;
 import com.maxle.cookBookPlus.repositories.RecipeRepository;
@@ -54,7 +54,7 @@ public class CookBookPlusApplication {
 		addIngredients();
 		List<Recipe> recipes = addRecipes();
 
-		User bill = new User();
+		chefUser bill = new chefUser();
 		bill.setUsername("Billy");
 		bill.setPassword("loveMicrosoft");
 		bill.setEmail("bill@outlook.com");
@@ -68,7 +68,7 @@ public class CookBookPlusApplication {
 		this.userRepo.flush();
 
 
-		User maxUser = new User();
+		chefUser maxUser = new chefUser();
 		maxUser.setUsername("Max-le");
 		maxUser.setPassword("wasabi");
 		maxUser.setEmail("max.09@outlook.com");

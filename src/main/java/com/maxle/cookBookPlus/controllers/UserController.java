@@ -4,7 +4,7 @@ package com.maxle.cookBookPlus.controllers;
 import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
-import com.maxle.cookBookPlus.models.entities.User;
+import com.maxle.cookBookPlus.models.entities.chefUser;
 import com.maxle.cookBookPlus.service.recipe.RecipeService;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
@@ -48,11 +48,11 @@ public class UserController {
 
     //Sign up (user creation)
     @PostMapping(value = {"/", ""})
-    public ResponseEntity<User> create(@Valid @RequestBody UserCreationDTO dtoModel){
+    public ResponseEntity<chefUser> create(@Valid @RequestBody UserCreationDTO dtoModel){
 
-        User newUser = this.mapper.map(dtoModel, User.class);
-        newUser.setPassword(bcrypt.encode(newUser.getPassword()));
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(newUser));
+        chefUser newChefUser = this.mapper.map(dtoModel, chefUser.class);
+        newChefUser.setPassword(bcrypt.encode(newChefUser.getPassword()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(newChefUser));
 
     }
 

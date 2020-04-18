@@ -26,6 +26,6 @@ public class Recipe {
     String type;
 
     @ManyToMany(mappedBy = "recipes", fetch = FetchType.LAZY)
-    Set<User> users;
+    Set<chefUser> chefUsers;
 
 }
