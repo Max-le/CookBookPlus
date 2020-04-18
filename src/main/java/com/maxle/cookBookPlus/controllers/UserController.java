@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,12 +31,14 @@ public class UserController {
     private final UserService userService;
     private final RecipeService recipeService;
     private final ModelMapper mapper;
+    private final BCryptPasswordEncoder bcrypt;
 
     @Autowired
-    public UserController(UserServiceImpl u, RecipeService r, ModelMapper mapper){
+    public UserController(UserServiceImpl u, RecipeService r, ModelMapper mapper, BCryptPasswordEncoder b){
         this.userService = u;
         this.recipeService = r;
         this.mapper = mapper;
+        this.bcrypt = b;
     }
 
     @GetMapping(value = {"/", ""})
@@ -43,10 +46,12 @@ public class UserController {
         return userService.findAll();
     }
 
+    //Sign up (user creation)
     @PostMapping(value = {"/", ""})
     public ResponseEntity<User> create(@Valid @RequestBody UserCreationDTO dtoModel){
 
         User newUser = this.mapper.map(dtoModel, User.class);
+        newUser.setPassword(bcrypt.encode(newUser.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(newUser));
 
     }
