@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+
 @RestController
 @RequestMapping("users")
 public class UserController {
@@ -47,8 +48,8 @@ public class UserController {
     }
 
     //Sign up (user creation)
-    @PostMapping(value = {"/", ""})
-    public ResponseEntity<chefUser> create(@Valid @RequestBody UserCreationDTO dtoModel){
+    @PostMapping("/sign-up")
+    public ResponseEntity<chefUser> create(@RequestBody UserCreationDTO dtoModel){
 
         chefUser newChefUser = this.mapper.map(dtoModel, chefUser.class);
         newChefUser.setPassword(bcrypt.encode(newChefUser.getPassword()));
@@ -57,7 +58,7 @@ public class UserController {
     }
 
     @GetMapping(value = {"{id}"})
-    public ResponseEntity<UserInfoDTO> getUserById(@PathVariable("id") Long id) {
+    public ResponseEntity<UserInfoDTO> getUserById(@Valid @PathVariable("id") Long id) {
         UserInfoDTO uDTO = userService.findById(id);
         return ResponseEntity.ok(uDTO);
     }
