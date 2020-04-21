@@ -33,6 +33,8 @@ public class CookBookPlusApplication {
 	private WebResourceRepository wrRepo;
 	@Autowired
 	private IngredientRepository ingredientRepo;
+	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
 
 
 	public static void main(String[] args) {
@@ -56,7 +58,7 @@ public class CookBookPlusApplication {
 
 		chefUser bill = new chefUser();
 		bill.setUsername("Billy");
-		bill.setPassword("loveMicrosoft");
+		bill.setPassword(pwdEncoder.encode("loveMicrosoft"));
 		bill.setEmail("bill@outlook.com");
 
 		//Linking recipes to user
@@ -70,7 +72,7 @@ public class CookBookPlusApplication {
 
 		chefUser maxUser = new chefUser();
 		maxUser.setUsername("Max-le");
-		maxUser.setPassword("wasabi");
+		maxUser.setPassword(pwdEncoder.encode("wasabi"));
 		maxUser.setEmail("max.09@outlook.com");
 
 		//Linking recipes to user
