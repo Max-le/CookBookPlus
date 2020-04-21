@@ -12,7 +12,6 @@ public class UserMapper {
 
         UserInfoDTO uDTO = new UserInfoDTO();
 
-        uDTO.setEmail(u.getEmail());
         uDTO.setUsername(u.getUsername());
         uDTO.setId(u.getId());
 

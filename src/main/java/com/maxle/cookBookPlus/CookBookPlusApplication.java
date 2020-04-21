@@ -57,9 +57,9 @@ public class CookBookPlusApplication {
 		List<Recipe> recipes = addRecipes();
 
 		chefUser bill = new chefUser();
-		bill.setUsername("Billy");
+		bill.setUsername("bill@outlook.com");
 		bill.setPassword(pwdEncoder.encode("loveMicrosoft"));
-		bill.setEmail("bill@outlook.com");
+		//bill.setEmail("bill@outlook.com");
 
 		//Linking recipes to user
 		bill.setRecipes(new HashSet<>());
@@ -71,9 +71,9 @@ public class CookBookPlusApplication {
 
 
 		chefUser maxUser = new chefUser();
-		maxUser.setUsername("Max-le");
+		maxUser.setUsername("max.09@outlook.com");
 		maxUser.setPassword(pwdEncoder.encode("wasabi"));
-		maxUser.setEmail("max.09@outlook.com");
+		//maxUser.setEmail("max.09@outlook.com");
 
 		//Linking recipes to user
 		maxUser.setRecipes(new HashSet<>());

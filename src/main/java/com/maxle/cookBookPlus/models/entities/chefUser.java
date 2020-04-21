@@ -9,7 +9,6 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
 @Entity(name = "chef_user")
@@ -23,19 +22,15 @@ public class chefUser {
     Long id;
 
     @Column(unique=true, nullable = false)
-    @NotBlank(message = "username cannot be blank.")
+    @Email(message = "This email is not valid.")
     String username;
 
     @Column(nullable = false)
     String password;
 
-    @Column(nullable = false)
-    @NotBlank(message = "email cannot be blank.")
-    @Email(message = "This email is not valid.")
-    String email;
+
 
     //TODO Ajouter ici les autres attributs que User a ( recipes, ingredients, cuisine, ...)
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "saved_recipes",
