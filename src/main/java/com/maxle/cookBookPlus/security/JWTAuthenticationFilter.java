@@ -2,6 +2,7 @@ package com.maxle.cookBookPlus.security;
 
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.maxle.cookBookPlus.models.DTO.user.UserLoginDTO;
 import com.maxle.cookBookPlus.models.entities.chefUser;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,11 +37,11 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
             javax.servlet.ServletInputStream inStream = req.getInputStream();
-            chefUser creds = new ObjectMapper().readValue(inStream, chefUser.class);
+            UserLoginDTO creds = new ObjectMapper().readValue(inStream, UserLoginDTO.class);
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            creds.getUsername(),
+                            creds.getEmail(),
                             creds.getPassword(),
                             new ArrayList<>())
             );
