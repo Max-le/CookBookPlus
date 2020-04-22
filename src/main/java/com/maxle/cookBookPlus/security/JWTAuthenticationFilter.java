@@ -3,7 +3,7 @@ package com.maxle.cookBookPlus.security;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maxle.cookBookPlus.models.DTO.user.UserLoginDTO;
-import com.maxle.cookBookPlus.models.entities.chefUser;
+import org.json.simple.JSONObject;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -52,7 +53,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest req,
-                                            HttpServletResponse res,
+                                            HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication auth) throws IOException, ServletException {
 
@@ -61,7 +62,13 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .withSubject(((User) auth.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
-        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-        System.out.println(res.getHeader("token"));
+        response.setContentType("application/json");
+        PrintWriter responseWriter = response.getWriter();
+        JSONObject jsonToken = new JSONObject();
+        jsonToken.put("token", token);
+        responseWriter.print(jsonToken.toJSONString());
+        responseWriter.flush();
+        //response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+
     }
 }
