@@ -5,7 +5,7 @@ import com.maxle.cookBookPlus.mappers.RecipeMapper;
 import com.maxle.cookBookPlus.mappers.UserMapper;
 import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
-import com.maxle.cookBookPlus.models.entities.User;
+import com.maxle.cookBookPlus.models.entities.chefUser;
 import com.maxle.cookBookPlus.repositories.UserRepository;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,29 +30,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User save(User user) {
-        return this.userRepo.save(user);
+    public chefUser save(chefUser chefUser) {
+        return this.userRepo.save(chefUser);
     }
 
     @Override
     public List<UserInfoDTO> findAll() {
-        List<User> users = userRepo.findAll();
-        return users.stream().map((userMapper::toUserInfoDTO)).collect(Collectors.toList());
+        List<chefUser> chefUsers = userRepo.findAll();
+        return chefUsers.stream().map((userMapper::toUserInfoDTO)).collect(Collectors.toList());
     }
 
     @Override
     public UserInfoDTO findById(@NonNull Long id) {
-        User user = this.userRepo.findById(id).orElseThrow(UserNotFoundException::new);
-        return userMapper.toUserInfoDTO(user);
+        chefUser chefUser = this.userRepo.findById(id).orElseThrow(UserNotFoundException::new);
+        return userMapper.toUserInfoDTO(chefUser);
     }
 
     @Override
     public List<RecipeDTO> findRecipesOfUser(@NonNull Long chef_user_id) {
-        Optional<User> userOptional = this.userRepo.findById(chef_user_id);
+        Optional<chefUser> userOptional = this.userRepo.findById(chef_user_id);
         if (!userOptional.isPresent()) return null;
-        User user = userOptional.get();
+        chefUser chefUser = userOptional.get();
 
-        List<RecipeDTO> recipesDTO = user.getRecipes().stream().map( r -> {
+        List<RecipeDTO> recipesDTO = chefUser.getRecipes().stream().map(r -> {
 
                  return recipeMapper.toRecipeDTO(r) ;
 

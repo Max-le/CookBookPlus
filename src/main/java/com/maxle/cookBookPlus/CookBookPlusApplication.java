@@ -3,7 +3,7 @@ package com.maxle.cookBookPlus;
 
 import com.maxle.cookBookPlus.models.entities.Ingredient;
 import com.maxle.cookBookPlus.models.entities.Recipe;
-import com.maxle.cookBookPlus.models.entities.User;
+import com.maxle.cookBookPlus.models.entities.chefUser;
 import com.maxle.cookBookPlus.models.entities.WebResource;
 import com.maxle.cookBookPlus.repositories.IngredientRepository;
 import com.maxle.cookBookPlus.repositories.RecipeRepository;
@@ -16,11 +16,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class CookBookPlusApplication {
@@ -33,6 +33,8 @@ public class CookBookPlusApplication {
 	private WebResourceRepository wrRepo;
 	@Autowired
 	private IngredientRepository ingredientRepo;
+	@Autowired
+	private BCryptPasswordEncoder pwdEncoder;
 
 
 	public static void main(String[] args) {
@@ -43,6 +45,10 @@ public class CookBookPlusApplication {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
+	@Bean
+	public BCryptPasswordEncoder bcryptInstance() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@EventListener(ApplicationReadyEvent.class)
 	public void initDB(){
@@ -50,12 +56,10 @@ public class CookBookPlusApplication {
 		addIngredients();
 		List<Recipe> recipes = addRecipes();
 
-		User bill = new User();
-		bill.setFirstName("Bill");
-		bill.setLastName("Gates");
-		bill.setUsername("Billy");
-		bill.setPassword("loveMicrosoft");
-		bill.setEmail("bill@outlook.com");
+		chefUser bill = new chefUser();
+		bill.setUsername("bill@outlook.com");
+		bill.setPassword(pwdEncoder.encode("loveMicrosoft"));
+		//bill.setEmail("bill@outlook.com");
 
 		//Linking recipes to user
 		bill.setRecipes(new HashSet<>());
@@ -67,8 +71,6 @@ public class CookBookPlusApplication {
 
 
 		User maxUser = new User();
-		maxUser.setFirstName("Max");
-		maxUser.setLastName("Lepin");
 		maxUser.setUsername("Max-le");
 		maxUser.setPassword("wasabi");
 		maxUser.setEmail("max.09@outlook.com");

@@ -10,6 +10,5 @@ import java.util.List;
 public class UserRecipesDTO {
     private Long id;
     private String username;
-    private String email;
     private List<RecipeDTO> recipes;
 }
