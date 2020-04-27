@@ -21,14 +21,6 @@ public class chefUser {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Column(nullable = false)
-    @NotBlank(message = "user must have a first name !")
-    String firstName;
-
-    @Column(nullable = false)
-    @NotBlank(message = "user must have a last name !")
-    String lastName;
-
     @Column(unique=true, nullable = false)
     @Email(message = "This email is not valid.")
     String username;
