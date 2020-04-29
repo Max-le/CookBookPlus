@@ -1,4 +1,4 @@
-package com.maxle.cookBookPlus.models.DTO.user;
+package com.maxle.cookBookPlus.models.DTO.recipe;
 
 import lombok.Setter;
 import lombok.Getter;

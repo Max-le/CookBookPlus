@@ -1,6 +1,6 @@
 package com.maxle.cookBookPlus.service.user;
 
-import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
+import com.maxle.cookBookPlus.models.DTO.recipe.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
 import com.maxle.cookBookPlus.models.entities.chefUser;
 import lombok.NonNull;

@@ -1,7 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
-import com.maxle.cookBookPlus.models.DTO.user.RecipeDTO;
+import com.maxle.cookBookPlus.models.DTO.recipe.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
 import com.maxle.cookBookPlus.models.entities.chefUser;

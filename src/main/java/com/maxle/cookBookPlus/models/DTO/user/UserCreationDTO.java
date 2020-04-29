@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class UserCreationDTO {
 
     @NotNull @NotBlank
-    private String username;
+    private String email;
 
     @NotNull @NotBlank
     private String password;

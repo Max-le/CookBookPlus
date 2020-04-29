@@ -1,7 +1,7 @@
 package com.maxle.cookBookPlus.service.ingredient;
 
 
-import com.maxle.cookBookPlus.models.DTO.user.IngredientInfoDTO;
+import com.maxle.cookBookPlus.models.DTO.recipe.IngredientInfoDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

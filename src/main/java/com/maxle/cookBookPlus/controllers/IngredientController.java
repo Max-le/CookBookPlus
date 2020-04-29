@@ -1,7 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
-import com.maxle.cookBookPlus.models.DTO.user.IngredientInfoDTO;
+import com.maxle.cookBookPlus.models.DTO.recipe.IngredientInfoDTO;
 import com.maxle.cookBookPlus.service.ingredient.IngredientService;
 import com.maxle.cookBookPlus.service.ingredient.IngredientServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

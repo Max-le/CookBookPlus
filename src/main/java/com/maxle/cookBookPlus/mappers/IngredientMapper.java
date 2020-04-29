@@ -1,6 +1,6 @@
 package com.maxle.cookBookPlus.mappers;
 
-import com.maxle.cookBookPlus.models.DTO.user.IngredientInfoDTO;
+import com.maxle.cookBookPlus.models.DTO.recipe.IngredientInfoDTO;
 import com.maxle.cookBookPlus.models.entities.Ingredient;
 import org.springframework.stereotype.Component;
 
