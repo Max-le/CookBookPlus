@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("web_resources")
+@RequestMapping("web-resources")
 public class WebResourceController {
     private WebResourceService webResService;
 
