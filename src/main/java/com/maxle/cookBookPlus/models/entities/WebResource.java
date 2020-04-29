@@ -30,5 +30,5 @@ public class WebResource {
     Byte[] image;
 
     @ManyToMany(mappedBy = "webResources")
-    Set<chefUser> chefUsers;
+    Set<ChefUser> chefUsers;
 }

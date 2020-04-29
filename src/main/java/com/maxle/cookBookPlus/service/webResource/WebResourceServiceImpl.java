@@ -1,6 +1,6 @@
 package com.maxle.cookBookPlus.service.webResource;
 
-import com.maxle.cookBookPlus.models.entities.chefUser;
+import com.maxle.cookBookPlus.models.entities.ChefUser;
 import com.maxle.cookBookPlus.models.entities.WebResource;
 import com.maxle.cookBookPlus.repositories.WebResourceRepository;
 import lombok.NonNull;
@@ -21,7 +21,7 @@ public class WebResourceServiceImpl implements WebResourceService {
     }
 
     @Override
-    public WebResource save(chefUser chefUser) {
+    public WebResource save(ChefUser chefUser) {
         return null;
     }
 

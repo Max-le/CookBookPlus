@@ -1,6 +1,6 @@
 package com.maxle.cookBookPlus.service.webResource;
 
-import com.maxle.cookBookPlus.models.entities.chefUser;
+import com.maxle.cookBookPlus.models.entities.ChefUser;
 import com.maxle.cookBookPlus.models.entities.WebResource;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 public interface WebResourceService {
-    WebResource save(chefUser chefUser);
+    WebResource save(ChefUser chefUser);
     List<WebResource> findAll();
     Optional<WebResource> findById(@NonNull Long id);
 }

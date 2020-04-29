@@ -15,7 +15,7 @@ import java.util.Set;
 @Table(name = "chef_user")
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class chefUser {
+public class ChefUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

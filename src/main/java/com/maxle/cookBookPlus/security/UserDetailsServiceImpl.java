@@ -1,6 +1,6 @@
 package com.maxle.cookBookPlus.security;
 
-import com.maxle.cookBookPlus.models.entities.chefUser;
+import com.maxle.cookBookPlus.models.entities.ChefUser;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        chefUser chefUser = userRepo.findByUsername(username);
+        ChefUser chefUser = userRepo.findByUsername(username);
         if (chefUser == null) {
             throw new UsernameNotFoundException(username);
         }
