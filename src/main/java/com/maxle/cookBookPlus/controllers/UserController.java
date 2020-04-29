@@ -1,6 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
+import com.maxle.cookBookPlus.mappers.UserMapper;
 import com.maxle.cookBookPlus.models.DTO.recipe.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
@@ -8,7 +9,6 @@ import com.maxle.cookBookPlus.models.entities.ChefUser;
 import com.maxle.cookBookPlus.service.recipe.RecipeService;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,15 +31,15 @@ public class UserController {
 
     private final UserService userService;
     private final RecipeService recipeService;
-    private final ModelMapper mapper;
+    private final UserMapper userMapper;
     private final BCryptPasswordEncoder bcrypt;
 
     @Autowired
-    public UserController(UserServiceImpl u, RecipeService r, ModelMapper mapper, BCryptPasswordEncoder b){
-        this.userService = u;
-        this.recipeService = r;
-        this.mapper = mapper;
+    public UserController(UserServiceImpl uServ, RecipeService rServ, BCryptPasswordEncoder b, UserMapper uMapper){
+        this.userService = uServ;
+        this.recipeService = rServ;
         this.bcrypt = b;
+        this.userMapper = uMapper;
     }
 
     @GetMapping(value = {"/", ""})
@@ -51,7 +51,7 @@ public class UserController {
     @PostMapping("/sign-up")
     public ResponseEntity<ChefUser> create(@RequestBody UserCreationDTO dtoModel){
 
-        ChefUser newChefUser = this.mapper.map(dtoModel, ChefUser.class);
+        ChefUser newChefUser = userMapper.toUser(dtoModel);
         newChefUser.setPassword(bcrypt.encode(newChefUser.getPassword()));
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(newChefUser));
 
