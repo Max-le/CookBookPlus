@@ -1,7 +1,7 @@
 package com.maxle.cookBookPlus.service.ingredient;
 
 import com.maxle.cookBookPlus.mappers.IngredientMapper;
-import com.maxle.cookBookPlus.models.DTO.recipe.IngredientInfoDTO;
+import com.maxle.cookBookPlus.models.DTO.others.IngredientInfoDTO;
 import com.maxle.cookBookPlus.models.entities.Ingredient;
 import com.maxle.cookBookPlus.repositories.IngredientRepository;
 import org.springframework.beans.factory.annotation.Autowired;

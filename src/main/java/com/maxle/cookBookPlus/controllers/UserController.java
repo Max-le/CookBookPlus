@@ -2,13 +2,17 @@ package com.maxle.cookBookPlus.controllers;
 
 
 import com.maxle.cookBookPlus.mappers.UserMapper;
-import com.maxle.cookBookPlus.models.DTO.recipe.RecipeDTO;
+import com.maxle.cookBookPlus.models.DTO.others.RecipeDTO;
+import com.maxle.cookBookPlus.models.DTO.others.WebResourceDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserCreationDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
 import com.maxle.cookBookPlus.models.entities.ChefUser;
 import com.maxle.cookBookPlus.service.recipe.RecipeService;
+import com.maxle.cookBookPlus.service.recipe.RecipeServiceImpl;
 import com.maxle.cookBookPlus.service.user.UserService;
 import com.maxle.cookBookPlus.service.user.UserServiceImpl;
+import com.maxle.cookBookPlus.service.webResource.WebResourceService;
+import com.maxle.cookBookPlus.service.webResource.WebResourceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,15 +35,18 @@ public class UserController {
 
     private final UserService userService;
     private final RecipeService recipeService;
+    private final WebResourceService webResService;
     private final UserMapper userMapper;
     private final BCryptPasswordEncoder bcrypt;
 
     @Autowired
-    public UserController(UserServiceImpl uServ, RecipeService rServ, BCryptPasswordEncoder b, UserMapper uMapper){
+    public UserController(UserServiceImpl uServ, RecipeServiceImpl rServ, WebResourceServiceImpl webResServ,
+                          BCryptPasswordEncoder b, UserMapper uMapper){
         this.userService = uServ;
         this.recipeService = rServ;
         this.bcrypt = b;
         this.userMapper = uMapper;
+        this.webResService = webResServ;
     }
 
     @GetMapping(value = {"/", ""})
@@ -66,7 +73,16 @@ public class UserController {
     //Get all recipes of one user.
     @GetMapping(value = "{id}/recipes")
     public ResponseEntity<List<RecipeDTO>> getRecipesOfOneUser(@PathVariable("id") Long id){
-        return ResponseEntity.ok(this.userService.findRecipesOfUser(id));
+        return ResponseEntity.ok(userService.findRecipesOfUser(id));
     }
+
+    //Get all web resources (bookmarks) of a one user
+    @GetMapping(value = "{id}/bookmarks")
+    public ResponseEntity<List<WebResourceDTO>> getBookmarksOfOneUser(@PathVariable("id") Long id){
+        List<WebResourceDTO> bookmarks = webResService.findAll();
+        return ResponseEntity.ok(bookmarks);
+    }
+
+
 
 }

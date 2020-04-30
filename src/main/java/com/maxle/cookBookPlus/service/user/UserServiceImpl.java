@@ -3,7 +3,7 @@ package com.maxle.cookBookPlus.service.user;
 import com.maxle.cookBookPlus.exceptions.UserNotFoundException;
 import com.maxle.cookBookPlus.mappers.RecipeMapper;
 import com.maxle.cookBookPlus.mappers.UserMapper;
-import com.maxle.cookBookPlus.models.DTO.recipe.RecipeDTO;
+import com.maxle.cookBookPlus.models.DTO.others.RecipeDTO;
 import com.maxle.cookBookPlus.models.DTO.user.UserInfoDTO;
 import com.maxle.cookBookPlus.models.entities.ChefUser;
 import com.maxle.cookBookPlus.repositories.UserRepository;

@@ -1,6 +1,7 @@
 package com.maxle.cookBookPlus.controllers;
 
 
+import com.maxle.cookBookPlus.models.DTO.others.WebResourceDTO;
 import com.maxle.cookBookPlus.models.entities.WebResource;
 import com.maxle.cookBookPlus.service.webResource.WebResourceService;
 import com.maxle.cookBookPlus.service.webResource.WebResourceServiceImpl;
@@ -22,7 +23,7 @@ public class WebResourceController {
     }
 
     @GetMapping("/all")
-    public List<WebResource> getAll(){
+    public List<WebResourceDTO> getAll(){
         return webResService.findAll();
     }
 }
