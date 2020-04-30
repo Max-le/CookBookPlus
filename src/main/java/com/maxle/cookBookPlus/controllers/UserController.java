@@ -79,7 +79,7 @@ public class UserController {
     //Get all web resources (bookmarks) of a one user
     @GetMapping(value = "{id}/bookmarks")
     public ResponseEntity<List<WebResourceDTO>> getBookmarksOfOneUser(@PathVariable("id") Long id){
-        List<WebResourceDTO> bookmarks = webResService.findAll();
+        List<WebResourceDTO> bookmarks = webResService.find();
         return ResponseEntity.ok(bookmarks);
     }
 
