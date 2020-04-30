@@ -56,9 +56,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RecipeDTO> findRecipesOfUser(@NonNull Long chefUserId) {
-        Optional<ChefUser> userOptional = this.userRepo.findById(chefUserId);
-        if (!userOptional.isPresent()) return null;
-        ChefUser chefUser = userOptional.get();
+        ChefUser chefUser = this.userRepo.findById(chefUserId).orElseThrow(UserNotFoundException::new);
 
         List<RecipeDTO> recipesDTO = chefUser.getRecipes().stream().map(r -> {
 
@@ -73,6 +71,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<WebResourceDTO> findResourcesOfUser(Long chefUserId) {
         Optional<ChefUser> userOptional = this.userRepo.findById(chefUserId);
+        if (!userOptional.isPresent()) return null;
         ChefUser chefUser = userOptional.get();
 
         List<WebResourceDTO> resourcesDTO = chefUser.getWebResources().stream().map(wr -> {
