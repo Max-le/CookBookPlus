@@ -44,7 +44,7 @@ public class ChefUser {
     @JoinTable(
             name = "bookmarks",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "resrouce_id"))
+            inverseJoinColumns = @JoinColumn(name = "resource_id"))
     Set<WebResource> webResources;
 
 }
