@@ -66,6 +66,10 @@ public class CookBookPlusApplication {
 		bill.getRecipes().add(recipes.get(0));
 		bill.getRecipes().add(recipes.get(2));
 
+		bill.setWebResources(new HashSet<>());
+		bill.getWebResources().add(resources.get(1));
+		bill.getWebResources().add(resources.get(2));
+
 		this.userRepo.save(bill);
 		this.userRepo.flush();
 
@@ -83,6 +87,7 @@ public class CookBookPlusApplication {
 		maxUser.setWebResources(new HashSet<>());
 		maxUser.getWebResources().add(resources.get(0));
 		maxUser.getWebResources().add(resources.get(1));
+		maxUser.getWebResources().add(resources.get(2));
 
 		this.userRepo.save(maxUser);
 		this.userRepo.flush();
