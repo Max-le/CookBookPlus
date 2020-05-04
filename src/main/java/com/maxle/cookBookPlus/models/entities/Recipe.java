@@ -2,6 +2,8 @@ package com.maxle.cookBookPlus.models.entities;
 
 import lombok.AccessLevel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -26,6 +28,8 @@ public class Recipe {
     String type;
 
     @ManyToMany(mappedBy = "recipes", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     Set<ChefUser> chefUsers;
 
 }
